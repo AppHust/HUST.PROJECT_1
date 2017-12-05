@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hust.Data", "Hust.Data\Hust.Data.csproj", "{C2912509-149B-404B-B6BE-7E174FA72020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hust.Web", "Hust.Web\Hust.Web.csproj", "{2FD5643D-E8D9-44BE-B854-876EEE36478B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2912509-149B-404B-B6BE-7E174FA72020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2912509-149B-404B-B6BE-7E174FA72020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2912509-149B-404B-B6BE-7E174FA72020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2912509-149B-404B-B6BE-7E174FA72020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD5643D-E8D9-44BE-B854-876EEE36478B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD5643D-E8D9-44BE-B854-876EEE36478B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD5643D-E8D9-44BE-B854-876EEE36478B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD5643D-E8D9-44BE-B854-876EEE36478B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {740928AE-0518-48B2-89E7-EBE19F538A88}
+	EndGlobalSection
+EndGlobal

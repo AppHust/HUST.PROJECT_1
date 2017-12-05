@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HustModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BaoCaos">
+    <Key>
+      <PropertyRef Name="IdBaoCao" />
+    </Key>
+    <Property Name="IdBaoCao" Type="int" Nullable="false" />
+    <Property Name="IdCongTac" Type="int" />
+    <Property Name="IdNguoiLapBaoCao" Type="int" />
+  </EntityType>
+  <EntityType Name="ChiPhiCongTacs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCongTac" Type="int" />
+    <Property Name="IdNhanVien" Type="int" />
+    <Property Name="IdChiPhi" Type="int" />
+    <Property Name="TrangThaiChiPhiCongTac" Type="int" />
+  </EntityType>
+  <EntityType Name="ChiPhis">
+    <Key>
+      <PropertyRef Name="IdChiPhi" />
+    </Key>
+    <Property Name="IdChiPhi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChiPhi" Type="nvarchar" MaxLength="250" />
+    <Property Name="TienChi" Type="varchar" MaxLength="50" />
+    <Property Name="IdChucVuSuDung" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="250" />
+    <Property Name="TrangThaiChiPhi" Type="int" />
+  </EntityType>
+  <EntityType Name="ChucNangHeThongs">
+    <Key>
+      <PropertyRef Name="IdChucNangHeThong" />
+    </Key>
+    <Property Name="IdChucNangHeThong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChucNang" Type="nvarchar" MaxLength="250" />
+    <Property Name="IdChucVu" Type="int" />
+    <Property Name="IdParent" Type="int" />
+    <Property Name="IdChild" Type="int" />
+    <Property Name="Slug" Type="varchar" MaxLength="50" />
+    <Property Name="FaIcon" Type="varchar" MaxLength="50" />
+    <Property Name="TrangThaiChucNang" Type="int" />
+  </EntityType>
+  <EntityType Name="ChucVus">
+    <Key>
+      <PropertyRef Name="IdChucVu" />
+    </Key>
+    <Property Name="IdChucVu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChucVu" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CongTacs">
+    <Key>
+      <PropertyRef Name="IdCongTac" />
+    </Key>
+    <Property Name="IdCongTac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenCongTac" Type="nvarchar" MaxLength="250" />
+    <Property Name="IdNguoiLapKeHoach" Type="int" />
+    <Property Name="IdPhongBan" Type="int" />
+    <Property Name="DiaDiemCongTac" Type="nvarchar" MaxLength="250" />
+    <Property Name="NgayDiCongTac" Type="date" />
+    <Property Name="NoiDungCongTac" Type="nvarchar(max)" />
+    <Property Name="TongChiPhiCongTac" Type="nvarchar" MaxLength="50" />
+    <Property Name="TrangThaiCongTac" Type="int" />
+  </EntityType>
+  <EntityType Name="NhanViens">
+    <Key>
+      <PropertyRef Name="IdNhanVien" />
+    </Key>
+    <Property Name="IdNhanVien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTenNhanVien" Type="nvarchar" MaxLength="250" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="250" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+    <Property Name="IpDangNhapGanNhat" Type="varchar" MaxLength="50" />
+    <Property Name="IdPhongBan" Type="int" />
+    <Property Name="IdChucVu" Type="int" />
+    <Property Name="NgayDangNhapGanNhat" Type="datetime" />
+    <Property Name="Token" Type="varchar(max)" />
+    <Property Name="TrangThaiNhanVien" Type="int" />
+  </EntityType>
+  <EntityType Name="PhongBans">
+    <Key>
+      <PropertyRef Name="IdPhongBan" />
+    </Key>
+    <Property Name="IdPhongBan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenPhongBan" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TrangThaiHeThong">
+    <Key>
+      <PropertyRef Name="IdTrangThai" />
+    </Key>
+    <Property Name="IdTrangThai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTrangThai" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK_ChiPhiCongTacs_ChiPhis">
+    <End Role="ChiPhis" Type="Self.ChiPhis" Multiplicity="0..1" />
+    <End Role="ChiPhiCongTacs" Type="Self.ChiPhiCongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiPhis">
+        <PropertyRef Name="IdChiPhi" />
+      </Principal>
+      <Dependent Role="ChiPhiCongTacs">
+        <PropertyRef Name="IdChiPhi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiPhiCongTacs_CongTacs">
+    <End Role="CongTacs" Type="Self.CongTacs" Multiplicity="0..1" />
+    <End Role="ChiPhiCongTacs" Type="Self.ChiPhiCongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CongTacs">
+        <PropertyRef Name="IdCongTac" />
+      </Principal>
+      <Dependent Role="ChiPhiCongTacs">
+        <PropertyRef Name="IdCongTac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiPhiCongTacs_NhanViens">
+    <End Role="NhanViens" Type="Self.NhanViens" Multiplicity="0..1" />
+    <End Role="ChiPhiCongTacs" Type="Self.ChiPhiCongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanViens">
+        <PropertyRef Name="IdNhanVien" />
+      </Principal>
+      <Dependent Role="ChiPhiCongTacs">
+        <PropertyRef Name="IdNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiPhiCongTacs_TrangThaiHeThong">
+    <End Role="TrangThaiHeThong" Type="Self.TrangThaiHeThong" Multiplicity="0..1" />
+    <End Role="ChiPhiCongTacs" Type="Self.ChiPhiCongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiHeThong">
+        <PropertyRef Name="IdTrangThai" />
+      </Principal>
+      <Dependent Role="ChiPhiCongTacs">
+        <PropertyRef Name="TrangThaiChiPhiCongTac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiPhis_ChucVus">
+    <End Role="ChucVus" Type="Self.ChucVus" Multiplicity="0..1" />
+    <End Role="ChiPhis" Type="Self.ChiPhis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVus">
+        <PropertyRef Name="IdChucVu" />
+      </Principal>
+      <Dependent Role="ChiPhis">
+        <PropertyRef Name="IdChucVuSuDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiPhis_TrangThaiHeThong">
+    <End Role="TrangThaiHeThong" Type="Self.TrangThaiHeThong" Multiplicity="0..1" />
+    <End Role="ChiPhis" Type="Self.ChiPhis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiHeThong">
+        <PropertyRef Name="IdTrangThai" />
+      </Principal>
+      <Dependent Role="ChiPhis">
+        <PropertyRef Name="TrangThaiChiPhi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChucNangHeThongs_ChucVus">
+    <End Role="ChucVus" Type="Self.ChucVus" Multiplicity="0..1" />
+    <End Role="ChucNangHeThongs" Type="Self.ChucNangHeThongs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVus">
+        <PropertyRef Name="IdChucVu" />
+      </Principal>
+      <Dependent Role="ChucNangHeThongs">
+        <PropertyRef Name="IdChucVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChucNangHeThongs_TrangThaiHeThong">
+    <End Role="TrangThaiHeThong" Type="Self.TrangThaiHeThong" Multiplicity="0..1" />
+    <End Role="ChucNangHeThongs" Type="Self.ChucNangHeThongs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiHeThong">
+        <PropertyRef Name="IdTrangThai" />
+      </Principal>
+      <Dependent Role="ChucNangHeThongs">
+        <PropertyRef Name="TrangThaiChucNang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CongTacs_NhanViens">
+    <End Role="NhanViens" Type="Self.NhanViens" Multiplicity="0..1" />
+    <End Role="CongTacs" Type="Self.CongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanViens">
+        <PropertyRef Name="IdNhanVien" />
+      </Principal>
+      <Dependent Role="CongTacs">
+        <PropertyRef Name="IdNguoiLapKeHoach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CongTacs_TrangThaiHeThong">
+    <End Role="TrangThaiHeThong" Type="Self.TrangThaiHeThong" Multiplicity="0..1" />
+    <End Role="CongTacs" Type="Self.CongTacs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiHeThong">
+        <PropertyRef Name="IdTrangThai" />
+      </Principal>
+      <Dependent Role="CongTacs">
+        <PropertyRef Name="TrangThaiCongTac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanViens_ChucVus">
+    <End Role="ChucVus" Type="Self.ChucVus" Multiplicity="0..1" />
+    <End Role="NhanViens" Type="Self.NhanViens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVus">
+        <PropertyRef Name="IdChucVu" />
+      </Principal>
+      <Dependent Role="NhanViens">
+        <PropertyRef Name="IdChucVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanViens_PhongBans">
+    <End Role="PhongBans" Type="Self.PhongBans" Multiplicity="0..1" />
+    <End Role="NhanViens" Type="Self.NhanViens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongBans">
+        <PropertyRef Name="IdPhongBan" />
+      </Principal>
+      <Dependent Role="NhanViens">
+        <PropertyRef Name="IdPhongBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanViens_TrangThaiHeThong">
+    <End Role="TrangThaiHeThong" Type="Self.TrangThaiHeThong" Multiplicity="0..1" />
+    <End Role="NhanViens" Type="Self.NhanViens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiHeThong">
+        <PropertyRef Name="IdTrangThai" />
+      </Principal>
+      <Dependent Role="NhanViens">
+        <PropertyRef Name="TrangThaiNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HustModelStoreContainer">
+    <EntitySet Name="BaoCaos" EntityType="Self.BaoCaos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiPhiCongTacs" EntityType="Self.ChiPhiCongTacs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiPhis" EntityType="Self.ChiPhis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChucNangHeThongs" EntityType="Self.ChucNangHeThongs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChucVus" EntityType="Self.ChucVus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CongTacs" EntityType="Self.CongTacs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanViens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhongBans" EntityType="Self.PhongBans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrangThaiHeThong" EntityType="Self.TrangThaiHeThong" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ChiPhiCongTacs_ChiPhis" Association="Self.FK_ChiPhiCongTacs_ChiPhis">
+      <End Role="ChiPhis" EntitySet="ChiPhis" />
+      <End Role="ChiPhiCongTacs" EntitySet="ChiPhiCongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiPhiCongTacs_CongTacs" Association="Self.FK_ChiPhiCongTacs_CongTacs">
+      <End Role="CongTacs" EntitySet="CongTacs" />
+      <End Role="ChiPhiCongTacs" EntitySet="ChiPhiCongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiPhiCongTacs_NhanViens" Association="Self.FK_ChiPhiCongTacs_NhanViens">
+      <End Role="NhanViens" EntitySet="NhanViens" />
+      <End Role="ChiPhiCongTacs" EntitySet="ChiPhiCongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiPhiCongTacs_TrangThaiHeThong" Association="Self.FK_ChiPhiCongTacs_TrangThaiHeThong">
+      <End Role="TrangThaiHeThong" EntitySet="TrangThaiHeThong" />
+      <End Role="ChiPhiCongTacs" EntitySet="ChiPhiCongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiPhis_ChucVus" Association="Self.FK_ChiPhis_ChucVus">
+      <End Role="ChucVus" EntitySet="ChucVus" />
+      <End Role="ChiPhis" EntitySet="ChiPhis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiPhis_TrangThaiHeThong" Association="Self.FK_ChiPhis_TrangThaiHeThong">
+      <End Role="TrangThaiHeThong" EntitySet="TrangThaiHeThong" />
+      <End Role="ChiPhis" EntitySet="ChiPhis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChucNangHeThongs_ChucVus" Association="Self.FK_ChucNangHeThongs_ChucVus">
+      <End Role="ChucVus" EntitySet="ChucVus" />
+      <End Role="ChucNangHeThongs" EntitySet="ChucNangHeThongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChucNangHeThongs_TrangThaiHeThong" Association="Self.FK_ChucNangHeThongs_TrangThaiHeThong">
+      <End Role="TrangThaiHeThong" EntitySet="TrangThaiHeThong" />
+      <End Role="ChucNangHeThongs" EntitySet="ChucNangHeThongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CongTacs_NhanViens" Association="Self.FK_CongTacs_NhanViens">
+      <End Role="NhanViens" EntitySet="NhanViens" />
+      <End Role="CongTacs" EntitySet="CongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CongTacs_TrangThaiHeThong" Association="Self.FK_CongTacs_TrangThaiHeThong">
+      <End Role="TrangThaiHeThong" EntitySet="TrangThaiHeThong" />
+      <End Role="CongTacs" EntitySet="CongTacs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanViens_ChucVus" Association="Self.FK_NhanViens_ChucVus">
+      <End Role="ChucVus" EntitySet="ChucVus" />
+      <End Role="NhanViens" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanViens_PhongBans" Association="Self.FK_NhanViens_PhongBans">
+      <End Role="PhongBans" EntitySet="PhongBans" />
+      <End Role="NhanViens" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanViens_TrangThaiHeThong" Association="Self.FK_NhanViens_TrangThaiHeThong">
+      <End Role="TrangThaiHeThong" EntitySet="TrangThaiHeThong" />
+      <End Role="NhanViens" EntitySet="NhanViens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

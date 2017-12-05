@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HustModelStoreContainer" CdmEntityContainer="HustEntities">
+    <EntitySetMapping Name="BaoCaos">
+      <EntityTypeMapping TypeName="HustModel.BaoCao">
+        <MappingFragment StoreEntitySet="BaoCaos">
+          <ScalarProperty Name="IdBaoCao" ColumnName="IdBaoCao" />
+          <ScalarProperty Name="IdCongTac" ColumnName="IdCongTac" />
+          <ScalarProperty Name="IdNguoiLapBaoCao" ColumnName="IdNguoiLapBaoCao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiPhiCongTacs">
+      <EntityTypeMapping TypeName="HustModel.ChiPhiCongTac">
+        <MappingFragment StoreEntitySet="ChiPhiCongTacs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCongTac" ColumnName="IdCongTac" />
+          <ScalarProperty Name="IdNhanVien" ColumnName="IdNhanVien" />
+          <ScalarProperty Name="IdChiPhi" ColumnName="IdChiPhi" />
+          <ScalarProperty Name="TrangThaiChiPhiCongTac" ColumnName="TrangThaiChiPhiCongTac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiPhis">
+      <EntityTypeMapping TypeName="HustModel.ChiPhi">
+        <MappingFragment StoreEntitySet="ChiPhis">
+          <ScalarProperty Name="IdChiPhi" ColumnName="IdChiPhi" />
+          <ScalarProperty Name="TenChiPhi" ColumnName="TenChiPhi" />
+          <ScalarProperty Name="TienChi" ColumnName="TienChi" />
+          <ScalarProperty Name="IdChucVuSuDung" ColumnName="IdChucVuSuDung" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TrangThaiChiPhi" ColumnName="TrangThaiChiPhi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucNangHeThongs">
+      <EntityTypeMapping TypeName="HustModel.ChucNangHeThong">
+        <MappingFragment StoreEntitySet="ChucNangHeThongs">
+          <ScalarProperty Name="IdChucNangHeThong" ColumnName="IdChucNangHeThong" />
+          <ScalarProperty Name="TenChucNang" ColumnName="TenChucNang" />
+          <ScalarProperty Name="IdChucVu" ColumnName="IdChucVu" />
+          <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+          <ScalarProperty Name="IdChild" ColumnName="IdChild" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="FaIcon" ColumnName="FaIcon" />
+          <ScalarProperty Name="TrangThaiChucNang" ColumnName="TrangThaiChucNang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucVus">
+      <EntityTypeMapping TypeName="HustModel.ChucVu">
+        <MappingFragment StoreEntitySet="ChucVus">
+          <ScalarProperty Name="IdChucVu" ColumnName="IdChucVu" />
+          <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongTacs">
+      <EntityTypeMapping TypeName="HustModel.CongTac">
+        <MappingFragment StoreEntitySet="CongTacs">
+          <ScalarProperty Name="IdCongTac" ColumnName="IdCongTac" />
+          <ScalarProperty Name="TenCongTac" ColumnName="TenCongTac" />
+          <ScalarProperty Name="IdNguoiLapKeHoach" ColumnName="IdNguoiLapKeHoach" />
+          <ScalarProperty Name="IdPhongBan" ColumnName="IdPhongBan" />
+          <ScalarProperty Name="DiaDiemCongTac" ColumnName="DiaDiemCongTac" />
+          <ScalarProperty Name="NgayDiCongTac" ColumnName="NgayDiCongTac" />
+          <ScalarProperty Name="NoiDungCongTac" ColumnName="NoiDungCongTac" />
+          <ScalarProperty Name="TongChiPhiCongTac" ColumnName="TongChiPhiCongTac" />
+          <ScalarProperty Name="TrangThaiCongTac" ColumnName="TrangThaiCongTac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="HustModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanViens">
+          <ScalarProperty Name="IdNhanVien" ColumnName="IdNhanVien" />
+          <ScalarProperty Name="HoTenNhanVien" ColumnName="HoTenNhanVien" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="IpDangNhapGanNhat" ColumnName="IpDangNhapGanNhat" />
+          <ScalarProperty Name="IdPhongBan" ColumnName="IdPhongBan" />
+          <ScalarProperty Name="IdChucVu" ColumnName="IdChucVu" />
+          <ScalarProperty Name="NgayDangNhapGanNhat" ColumnName="NgayDangNhapGanNhat" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="TrangThaiNhanVien" ColumnName="TrangThaiNhanVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhongBans">
+      <EntityTypeMapping TypeName="HustModel.PhongBan">
+        <MappingFragment StoreEntitySet="PhongBans">
+          <ScalarProperty Name="IdPhongBan" ColumnName="IdPhongBan" />
+          <ScalarProperty Name="TenPhongBan" ColumnName="TenPhongBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrangThaiHeThongs">
+      <EntityTypeMapping TypeName="HustModel.TrangThaiHeThong">
+        <MappingFragment StoreEntitySet="TrangThaiHeThong">
+          <ScalarProperty Name="IdTrangThai" ColumnName="IdTrangThai" />
+          <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
